@@ -101,13 +101,13 @@ function getByName(request, response) {
                     'Content-Length': json.length,
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                url: `https://api.moloni.pt/v1/customers/getByName/?access_token=${access_token}`,
+                url: `https://api.moloni.pt/sandbox/customers/getAll/?access_token=ebad8a2f312836ad8a1b36967385586868894af0`,
                 body: json
             }
             req.post(options, (err, result) => {
                 if (!err && result.statusCode == 200) {
                     const costumer_id = JSON.parse(result.body);
-                    // console.log(costumer_id[0].customer_id);
+                    console.log(costumer_id[0].customer_id);
                     response({
                         'customer_id': costumer_id[0].customer_id,
                         'access_token': access_token,
@@ -122,226 +122,27 @@ function getByName(request, response) {
     })
 }
 
-function insertInvoice(request, callback) {
-    const nome = request;
-    var costumer_id = 0;
-    // getByName(nome, (response) =>{
-    //     costumer_id = response.costumer_id;
-    // })
-
+// Function to define innerHTML for HTML table
+function show(costumer_id) {
+    let tab = 
+        `<tr>
+          <th>ID</th>
+          <th>Nome</th>
+         </tr>`;
     
-
-    getByName(nome, (res) => {
-        // console.log(nome);
-        if (res) {
-            
-            customer_id = res.customer_id;
-            // console.log(customer_id);
-
-            const access_token = res.access_token;
-            // console.log(access_token);
-            
-
-
-            const json1 = querystring.stringify({
-                'company_id': 181093,
-                'date': new Date().toISOString(),
-                'expiration_date': new Date().toISOString(),
-                'document_set_id': 402498,
-                'customer_id': customer_id,
-                'products[0][product_id]': 86211844,
-                'products[0][name]': 'ServiçoWtransnet',
-                'products[0][qty]': 1.0,
-                'products[0][price]': 25,
-                'products[0][taxes][0][tax_id]': 2194883,
-                'products[0][taxes][0][value]': 5.75,
-                'products[0][taxes][0][order]': 1,
-                'products[0][taxes][0][cumulative]': 0,
-                'payments[0][payment_method_id]':1264289,
-                'payments[0][date]': new Date().toISOString(),
-                'payments[0][value]': 30.75,
-                'status': 1
-
-            })
-
-            let options = {
-                headers: {
-                    'Content-Length': json1.length,
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                url: `https://api.moloni.pt/v1/simplifiedInvoices/insert/?access_token=${access_token}`,
-                body: json1
-            }
-
-            req.post(options, (err, result) => {
-                if (!err && result.statusCode == 200) {
-                    callback({
-                        fatura: JSON.parse(result.body)
-                    })
-                } else {
-                    response.status(400).send(JSON.parse(result.body));
-                }
-            })
-        } else {
-            response.status(400).send("ERRO");
-        }
-    })
-}
-
-
-
-function insertProduct(nome, callback) {
-    const post = {
-        criador: nome.body.user_id,
-        origem: nome.body.origem,
-        destino: nome.body.destino,
-        especialidade: nome.body.especialidade,
-        peso: nome.body.peso
+    // Loop to access all rows 
+    for (let r of costumer_id[0].customer_id.list) {
+        tab += `<tr> 
+    <td>${r.company_id} </td>
+    <td>${r.name}</td>        
+</tr>`;
     }
-    connect.query('INSERT INTO transporte SET ?', post, (err, rows, fields) => {
-        if (!err) {
-            connect.query(`SELECT * FROM transporte WHERE criador=${nome.body.user_id} AND origem="${nome.body.origem}" AND destino="${nome.body.destino}" AND especialidade="${nome.body.especialidade}" AND peso="${nome.body.peso}"`, async (err, rows, fields) => {
-                const carga = rows[0];
-                console.log(carga.idtransporte);
-                getNextNumber((res) => {
-                    console.log(res);
-                    if (res.company_id) {
-                        const company_id = res.company_id;
-                        const category_id = 3802953;
-                        const type = 1;
-                        const access_token = res.access_token;
-
-
-                        const json = querystring.stringify({
-                            company_id: company_id,
-                            category_id: category_id,
-                            type: type,
-                            name: carga.idtransporte,
-                            reference: carga.idtransporte,
-                            price: 0.0,
-                            unit_id: 1578589,
-                            has_stock: 0,
-                            stock: 0,
-                            exemption_reason: 0
-                        })
-
-                        console.log(json);
-                        let options = {
-                            headers: {
-                                'Content-Length': json.length,
-                                'Content-Type': 'application/x-www-form-urlencoded'
-                            },
-                            url: `https://api.moloni.pt/v1/products/insert/?access_token=${access_token}`,
-                            body: json
-                        }
-                        req.post(options, (err, res) => {
-                            if (!err && res.statusCode == 200) {
-                                console.log(res.statusCode);
-                                callback.status(200).send({
-                                    'result': 'criado',
-                                    'body': JSON.parse(res.body)
-                                })
-                                //console.log(JSON.parse(res.body).customer_id);
-                            } else {
-                                callback.status(400).send({
-                                    'result': 'erro moloni',
-                                    'body': JSON.parse(res.body)
-                                })
-                            }
-                        })
-                    } else {
-                        callback.status(400).send({
-                            'result': 'erro bd',
-                            'body': res.body
-                        });
-                    }
-                })
-
-            })
-        } else {
-            callback.status(400).send({
-                'body': err
-            });
-        }
-    })
+    // Setting innerHTML as tab variable
+    document.getElementById("clientes").innerHTML = tab;
 }
 
 
 
-
-
-
-
-
-function insertClient(request, callback) {
-    getNextNumber((res) => {
-        if (res.company_id) {
-            const company_id = res.company_id;
-            const access_token = res.access_token;
-            const next_number = res.next_number;
-
-
-            const json = querystring.stringify({
-                company_id: company_id,
-                vat: request.nif,
-                number: next_number,
-                name: request.nome,
-                language_id: 1,
-                address: '',
-                zip_code: '',
-                city: '',
-                country_id: 1,
-                email: request.email,
-                website: '',
-                phone: '',
-                fax: '',
-                contact_name: '',
-                contact_email: '',
-                contact_phone: '',
-                notes: '',
-                salesman_id: 0,
-                price_class_id: 0,
-                maturity_date_id: 0,
-                payment_day: 1,
-                discount: 0,
-                credit_limit: 0,
-                payment_method_id: 0,
-                delivery_method_id: 0,
-                field_notes: '',
-                document_type_id: 1,
-                copies: 1
-            })
-
-
-            let options = {
-                headers: {
-                    'Content-Length': json.length,
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                url: `https://api.moloni.pt/v1/customers/insert/?access_token=${access_token}`,
-                body: json
-            }
-            req.post(options, (err, res) => {
-                if (!err && res.statusCode == 200) {
-                    console.log(res.body);
-                    callback({
-                            'inserido': true,
-                            'customer_id': JSON.parse(res.body).customer_id
-                    })
-                } else {
-                    callback({
-                        'inserido': false,
-                        'body': JSON.parse(res.body)
-                    })
-                }
-            })
-        } else {
-            callback.status(res.statusCode).send({
-                'body': res.body
-            });
-        }
-    })
-}
 
 function getNextNumber(callback) {
     getCompany((res) => {
@@ -684,7 +485,7 @@ function getCompany(callback) {
 
 function getToken(callback) {
     let options = {
-        url: `https://api.moloni.pt/v1/grant/?grant_type=password&client_id=${process.env.MOLONI_CLIENTID}&client_secret=${process.env.MOLONI_SECRET}&username=${process.env.EMAIL_USERNAME}&password=${process.env.MOLONI_PASSWORD}`
+        url: `https://api.moloni.pt/v1/grant/?grant_type=password&client_id=Grupo202&client_secret=aa80b95ea20210569cec0dacc2a533bf29b8e314&username=a93085@alunos.uminho.pt&password=Grupo202!IAIE`
     }
     req.get(options, (err, res) => {
         console.log(res.body);
@@ -708,10 +509,21 @@ module.exports = {
     getCompany: getCompany,
     getCategory: getCategory,
     getPurchases: getPurchases,
-    insertClientM: insertClient,
-    insertProduct: insertProduct,
     insertInvoice: insertInvoice,
-    // insertReceipt: insertReceipt,
     getPDFLink: getPDFLink,
     getByName: getByName
 };
+
+
+
+async function loadIntoTable(url, table){
+    const tableHead = table.querySelector("thead");
+    const tableBody = table.querySelector("tbody");
+    const responde = await fetch(url);
+    const data = await response.json();
+    
+
+    console.log(data);
+}
+
+loadIntoTable("https://api.moloni.pt/sandbox/customers/getAll/?access_token=7bfac3a20169a5037d1b8a8b2c494ad00a5de91e", document.querySelector("table"));
