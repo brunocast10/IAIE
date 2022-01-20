@@ -292,12 +292,40 @@
                                 }
                             </style>
                             <body>
-                                <table style="width:100%">
+                                <!--
+                                <table style="width:100%" id="teste">
                                     <thead>
+                                      <tr>
+                                        <th style="width:30%">ID</th>
+                                        <th style="width:40%">Nome</th>
+                                        <th style="width:30%">Morada</th>
+                                      </tr>
                                     </thead>
                                     <tbody>
-                                    </tbody>
+                                        <tr>
+                                            <td id="id"></td>
+                                            <td id="nome"></td>
+                                            <td id="morada"></td>
+                                        </tr>
+                                      <tbody>
                                 </table>
+                                -->
+                                <div id="id">
+                                </div>
+                                <div id="nome">
+                                </div>
+                                <div id="morada">
+                                </div>
+                                <script> 
+                                    fetch("http://localhost/dolibarr/api/index.php/contacts?sortfield=t.rowid&sortorder=ASC&limit=100")
+                                        .then(response => response.json())
+                                        .then(data =>{
+                                            console.log(data.customer_id)
+                                            console.log(data.name)
+                                            document.querySelector("#id").innerHTML = data.customer_id
+                                            document.querySelector("#nome").innerHTML = data.name
+                                        })
+                                </script>
                             </body>   
                 </div>
             </section>
@@ -311,6 +339,7 @@
     <script src="js/parallax.min.js"></script>
     <script src="js/templatemo-script.js"></script>
     <script src="moloni.controller.js"></script>
+    <script src="m.controller.js"></script>
 </body>
 </html>
 
