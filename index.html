@@ -320,10 +320,10 @@
                                     fetch("http://localhost/dolibarr/api/index.php/contacts?sortfield=t.rowid&sortorder=ASC&limit=100")
                                         .then(response => response.json())
                                         .then(data =>{
-                                            console.log(data.customer_id)
-                                            console.log(data.name)
-                                            document.querySelector("#id").innerHTML = data.customer_id
-                                            document.querySelector("#nome").innerHTML = data.name
+                                            console.log(data.firstname)
+                                            console.log(data.lastname)
+                                            document.querySelector("#id").innerHTML = data.firstname
+                                            document.querySelector("#nome").innerHTML = data.lastname
                                         })
                                 </script>
                             </body>   
@@ -338,8 +338,6 @@
     <script src="js/slick.js"></script>
     <script src="js/parallax.min.js"></script>
     <script src="js/templatemo-script.js"></script>
-    <script src="moloni.controller.js"></script>
-    <script src="m.controller.js"></script>
 </body>
 </html>
 
