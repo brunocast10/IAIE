@@ -21,6 +21,7 @@ async function renderUsers() {
                                         <th>Nome</th>
                                         <th>Morada</th>
                                         <th>Código Postal</th>
+                                        <th>País</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -31,6 +32,7 @@ async function renderUsers() {
                                         <td>${user.entity_name}</td>
                                         <td>${user.entity_address}</td>
                                         <td>${user.entity_zip_code}</td>
+                                        <td>${user.entity_country}</td>
                                     </tr>
                                 </tbody>
                             </table>

@@ -17,8 +17,10 @@ async function renderUsers() {
                                     <tr>
                                         <th>ID Documento</th>
                                         <th>ID Cliente</th>
+                                        <th>Nome</th>
                                         <th>Data</th>
                                         <th>Código Postal</th>
+                                        <th>País</th>
                                         <th>Desconto Financeiro</th>
                                     </tr>
                                 </thead>
@@ -26,8 +28,10 @@ async function renderUsers() {
                                     <tr>
                                         <td>${user.document_id}</td>
                                         <td>${user.customer_id}</td>
+                                        <td>${user.entity_name}</td>
                                         <td>${user.date}</td>
                                         <td>${user.entity_zip_code}</td>
+                                        <td>${user.entity_country}</td>
                                         <td>${user.financial_discount}</td>
                                     </tr>
                                 </tbody>
