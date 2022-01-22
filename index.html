@@ -28,19 +28,16 @@
                             <a class="nav-link" href="#section-2"><span class="icn"><img src="img/icon_supplier.png"></i></span> Fornecedores</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#section-3"><span class="icn"><img src="img/icon_fatura.png"></i></span> Recibos</a>
+                            <a onclick="window.location.href='recibos.html'" class="nav-link"><span class="icn"><img src="img/icon_fatura.png"></i></span> Recibos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#section-4"><span class="icn"><img src="img/icon_nde.png"></i></span> Notas de Encomenda</a>
+                            <a onclick="window.location.href='encomendas.html'" class="nav-link"><span class="icn"><img src="img/icon_nde.png"></i></span> Notas de Encomenda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#section-5"><span class="icn"><img src="img/icon_recibo.png"></i></span> Faturas</a>
+                            <a onclick="window.location.href='faturas.html'" class="nav-link"><span class="icn"><img src="img/icon_recibo.png"></i></span> Faturas</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#section-6"><span class="icn"><img src="img/icon_tel.png"></i></span> Contactos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#section-7"><span class="icn"><img src="img/icon_tel.png"></i></span> Fetch</a>
                         </li>
                     </ul>
                 </div>
@@ -178,217 +175,6 @@
                 </div>    
             </section>
 
-            <section class="contact-section section" id="section-3">
-                <div class="container"> 
-                    <style>
-                        #tabelaRecibos {
-                              border: 2px solid rgb(4, 4, 77);
-                              background-color: #F0F9F9;
-                              width: 100%;
-                              color:#142630;
-                            }
-                            tr:hover {background-color: #6699cc;}
-                            th {background-color: #356ba2;}
-                        </style>
-                        <body>
-                        
-                        <table style="width:100%" id="tabelaRecibos">
-                            <thead>
-                                <tr>
-                                    <th style="width:10%; color:white"">Número</th>
-                                    <th style="width:15%; color:white"">Data de emissão</th>
-                                    <th style="width:10%; color:white"">Série</th>
-                                    <th style="width:10%; color:white"">Código</th>
-                                    <th style="width:15%; color:white"">Nº de contribuinte</th>
-                                </tr>
-                            </thead>
-                        <tbody style="border: 2px solid rgb(4, 4, 77);">
-                          <tr style="border: 2px solid rgb(4, 4, 77);">
-                            <td>4454</td>
-                            <td>03-01-2022</td>
-                            <td>22</td>
-                            <td>92888</td>
-                            <td>274574012</td>
-                          </tr>
-                          <tr style="border: 2px solid rgb(4, 4, 77);">
-                            <td>3098</td>
-                            <td>17-03-2021</td>
-                            <td>12</td>
-                            <td>92884</td>
-                            <td>165220970</td>
-                          </tr>
-                          <tr style="border: 2px solid rgb(4, 4, 77);">
-                            <td>4000</td>
-                            <td>18-05-2021</td>
-                            <td>16</td>
-                            <td>92882</td>
-                            <td>273432890</td>
-                          </tr>
-                          <tr style="border: 2px solid rgb(4, 4, 77);">
-                            <td>4002</td>
-                            <td>19-05-2021</td>
-                            <td>16</td>
-                            <td>93085</td>
-                            <td>145345015</td>
-                          </tr>
-                          <tr style="border: 2px solid rgb(4, 4, 77);">
-                            <td>4575</td>
-                            <td>20-01-2022</td>
-                            <td>25</td>
-                            <td>91765</td>
-                            <td>265567890</td>
-                          </tr>
-                        </tbody>
-                        </table>            
-                </div>
-            </section>
-
-            <section class="contact-section section" id="section-4">
-                <div class="container">
-                    <style>
-                        #tabelaEncomenda {
-                              border: 2px solid rgb(4, 4, 77);
-                              background-color: #F0F9F9;
-                              width: 100%;
-                              color:#142630;
-                            }
-                            tr:hover {background-color: #6699cc;}
-                            th {background-color: #356ba2;}
-                        </style>
-                        <body>
-                        
-                        <table style="width:100%" id="tabelaEncomenda">
-                            <thead>
-                                <tr>
-                                    <th style="width:1%; color:white"">Enc./Orç.</th>
-                                    <th style="width:7%; color:white"">Refª Cliente</th>
-                                    <th style="width:10%; color:white"">Cond. Pgto</th>
-                                    <th style="width:5%; color:white"">Data Vencimento</th>
-                                    <th style="width:5%; color:white"">Desc. Global</th>
-                                    <th style="width:5%; color:white"">Total líquido</th>
-                                </tr>
-                            </thead>
-                        <tbody style="border: 2px solid rgb(4, 4, 77);">
-                          <tr style="border: 2px solid rgb(4, 4, 77);">
-                            <td>não</td>
-                            <td>92888</td>
-                            <td>3 meses</td>
-                            <td>17-03-2022</td>
-                            <td>10%</td>
-                            <td>360,9€</td>
-                          </tr>
-                          <tr style="border: 2px solid rgb(4, 4, 77);">
-                            <td>não</td>
-                            <td>92884</td>
-                            <td>30 dias</td>
-                            <td>04-01-2022</td>
-                            <td>5%</td>
-                            <td>200€</td>
-                          </tr>
-                          <tr style="border: 2px solid rgb(4, 4, 77);">
-                            <td>não</td>
-                            <td>92882</td>
-                            <td>6 meses</td>
-                            <td>15-11-2021</td>
-                            <td>15%</td>
-                            <td>4045,99€</td>
-                          </tr>
-                          <tr style="border: 2px solid rgb(4, 4, 77);">
-                            <td>não</td>
-                            <td>93085</td>
-                            <td>15 dias</td>
-                            <td>15-07-2021</td>
-                            <td>-</td>
-                            <td>22€</td>
-                          </tr>
-                          <tr style="border: 2px solid rgb(4, 4, 77);">
-                            <td>não</td>
-                            <td>91456</td>
-                            <td>30 dias</td>
-                            <td>19-05-2020</td>
-                            <td>10%</td>
-                            <td>540€</td>
-                          </tr>
-                        </tbody>
-                        </table>
-                </div>
-            </section>
-
-            <section class="contact-section section" id="section-5">
-                <div class="container">
-                    <style>
-                        #tabelaFatura {
-                              border: 2px solid rgb(4, 4, 77);
-                              background-color: #F0F9F9;
-                              width: 100%;
-                              color:#142630;
-                            }
-                            tr:hover {background-color: #6699cc;}
-                            th {background-color: #356ba2;}
-                        </style>
-                        <body>
-                        
-                        <table style="width:100%" id="tabelaFatura">
-                            <thead>
-                                <tr>
-                                    <th style="width:30%; color:white"">Data</th>
-                                    <th style="width:30%; color:white"">Total Líquido</th>
-                                    <th style="width:40%; color:white"">Termos de pagamento</th>
-                                </tr>
-                            </thead>
-                        <tbody style="border: 2px solid rgb(4, 4, 77);">
-                          <tr style="border: 2px solid rgb(4, 4, 77);">
-                            <td>04-01-2022</td>
-                            <td>246€</td>
-                            <td>Transferência bancária</td>
-                          </tr>
-                          <tr style="border: 2px solid rgb(4, 4, 77);">
-                            <td>20-09-2021</td>
-                            <td>3010€</td>
-                            <td>Cheque</td>
-                          </tr>
-                          <tr style="border: 2px solid rgb(4, 4, 77);">
-                            <td>15-02-2020</td>
-                            <td>22€</td>
-                            <td>Dinheiro</td>
-                          </tr>
-                          <tr style="border: 2px solid rgb(4, 4, 77);">
-                            <td>07-04-2021</td>
-                            <td>750€</td>
-                            <td>Transferência bancária</td>
-                          </tr>
-                          <tr style="border: 2px solid rgb(4, 4, 77);">
-                            <td>25-10-2020</td>
-                            <td>790€</td>
-                            <td>Transferência bancária</td>
-                          </tr>
-                          <tr style="border: 2px solid rgb(4, 4, 77);">
-                            <td>13-12-2021</td>
-                            <td>246€</td>
-                            <td>Transferência bancária</td>
-                          </tr>
-                          <tr style="border: 2px solid rgb(4, 4, 77);">
-                            <td>18-01-2022</td>
-                            <td>2500€</td>
-                            <td>Cheque</td>
-                          </tr>
-                          <tr style="border: 2px solid rgb(4, 4, 77);">
-                            <td>21-01-2022</td>
-                            <td>129€</td>
-                            <td>Transferência bancária</td>
-                          </tr>
-                          <tr style="border: 2px solid rgb(4, 4, 77);">
-                            <td>03-12-2021</td>
-                            <td>1050€</td>
-                            <td>Cheque</td>
-                          </tr>
-                        </tbody>
-                        </table>              
-                </div>
-            </section>
-
-            
-                    
                     <section class="contact-section section" id="section-6">
                         <div class="container">
                             <div class="title">
@@ -442,50 +228,6 @@
                             </div>                
                         </div>
                     </section>
-
-            <section class="contact-section section" id="section-7">
-                <div class="container">
-                            <style>
-                            </style>
-                            <body>
-                                <!--
-                                <table style="width:100%" id="teste">
-                                    <thead>
-                                      <tr>
-                                        <th style="width:30%">ID</th>
-                                        <th style="width:40%">Nome</th>
-                                        <th style="width:30%">Morada</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td id="id"></td>
-                                            <td id="nome"></td>
-                                            <td id="morada"></td>
-                                        </tr>
-                                      <tbody>
-                                </table>
-                                -->
-                                <div id="id">
-                                </div>
-                                <div id="nome">
-                                </div>
-                                <div id="morada">
-                                </div>
-                                <script> 
-                                    fetch("http://localhost/dolibarr/api/index.php/contacts?sortfield=t.rowid&sortorder=ASC&limit=100")
-                                        .then(response => response.json())
-                                        .then(data =>{
-                                            console.log(data.firstname)
-                                            console.log(data.lastname)
-                                            document.querySelector("#id").innerHTML = data.firstname
-                                            document.querySelector("#nome").innerHTML = data.lastname
-                                        })
-                                </script>
-                            </body>   
-                </div>
-            </section>
-
         </main>
     </div>
     <script src="js/jquery-3.3.1.min.js"></script>
