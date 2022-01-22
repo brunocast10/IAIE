@@ -1,5 +1,5 @@
 async function getUsers() {
-    let url = 'http://localhost/dolibarr/api/index.php/contacts?sortfield=t.rowid&sortorder=ASC&limit=100';
+    let url = 'https://iaie33.herokuapp.com/receipts';
     try {
         let res = await fetch(url);
         return await res.json();
@@ -12,7 +12,7 @@ async function renderUsers() {
     let html = '';
     users.forEach(user => {
         let htmlSegment = `<div class="user">
-                            <h2>${user.firstname} ${user.lastname}</h2>
+                            <h2> ${user.document_id}  ${user.customer_id} ${user.date} ${user.entity_zip_code} ${user.financial_discount} </h2>
                         </div>`;
 
         html += htmlSegment;
